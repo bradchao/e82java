@@ -4,7 +4,7 @@ public class Brad01 {
 
 	public static void main(String[] args) {
 		byte var1;
-		byte var2 = 12;
+		byte var2 = 123;
 		int var3;
 		byte var4 = 123;
 		byte $_$ = 123;
