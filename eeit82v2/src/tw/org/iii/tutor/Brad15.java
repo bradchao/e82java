@@ -9,6 +9,9 @@ public class Brad15 {
 		int b2 = 10;
 		System.out.println(b2);
 		System.out.println(b1);
+		
+		//b1.speed = 123;
+		System.out.println(b1.speed);
 
 	}
 
