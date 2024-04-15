@@ -11,8 +11,15 @@ public class Brad15 {
 		System.out.println(b1);
 		
 		//b1.speed = 123;
-		System.out.println(b1.speed);
-
+		System.out.println(b1.getSpeed());
+		System.out.println("---");
+		b1.upSpeed();b1.upSpeed();b1.upSpeed();b1.upSpeed();
+		System.out.println(b1.getSpeed());
+		b1.downSpeed();b1.downSpeed();
+		System.out.println(b1.getSpeed());
+		System.out.println("---");
+		//b1.speed = 10.1;
+		//System.out.println(b1.speed);
 	}
 
 }
