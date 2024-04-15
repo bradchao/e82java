@@ -1,6 +1,6 @@
 package tw.org.iii.apis;
 
-public class Bike {
+public class Bike extends Object{
 	protected double speed;
 	
 	public void upSpeed() {
