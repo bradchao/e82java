@@ -15,4 +15,9 @@ public class Bike extends Object{
 		return speed;
 	}
 	
+	
+	public String toString() {
+		return String.format("Speed is %f", speed);
+	}
+	
 }
