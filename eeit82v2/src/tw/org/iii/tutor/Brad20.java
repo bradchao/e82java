@@ -10,6 +10,10 @@ public class Brad20 {
 		}else {
 			System.out.println("XX");
 		}
+		System.out.println(new TWId());
+		System.out.println(new TWId(true));
+		System.out.println(new TWId(4));
+		System.out.println(new TWId(false, 7));
 		
 		
 

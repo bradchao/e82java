@@ -2,6 +2,7 @@ package tw.org.iii.apis;
 
 public class TWId {
 	private String id;
+	private static String letters = "ABCDEFGHJKLMNPQRSTUVXYWZIO";
 	
 //	public TWId(String id) {
 //		this.id = id;
@@ -17,12 +18,32 @@ public class TWId {
 		this((int)(Math.random()*2) == 0, area);
 	}
 	
-	public TWId(boolean isMale, int area) {
-		
+	public TWId(boolean isMale, int area) {	// area = 0 ~25
+		StringBuffer sb = new StringBuffer();
+		sb.append(letters.substring(area, area+1))
+			.append(isMale ? "1" : "2")
+			.append((int)(Math.random()*10))
+			.append((int)(Math.random()*10))
+			.append((int)(Math.random()*10))
+			.append((int)(Math.random()*10))
+			.append((int)(Math.random()*10))
+			.append((int)(Math.random()*10))
+			.append((int)(Math.random()*10));
+		String temp = sb.toString();
+		for (int i=0; i<10; i++) {
+			if (checkTWId(temp + i)) {
+				id = temp + i;
+				break;
+			}
+		}
+
 	}
 	
 	
-	
+	@Override
+	public String toString() {
+		return String.format("ID = %s", id);
+	}
 	
 	
 	public static boolean checkTWId(String id) {
@@ -32,7 +53,6 @@ public class TWId {
 		// 4. 3 - 10 => 0-9
 		boolean isRight = false;
 		if (id.matches("[A-Z][12][0-9]{8}")) {
-			String letters = "ABCDEFGHJKLMNPQRSTUVXYWZIO";
 			char c1 = id.charAt(0);
 			int a12 = letters.indexOf(c1) + 10;
 			int a1 = a12 / 10;
