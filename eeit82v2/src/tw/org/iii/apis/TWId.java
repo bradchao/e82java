@@ -4,9 +4,9 @@ public class TWId {
 	private String id;
 	private static String letters = "ABCDEFGHJKLMNPQRSTUVXYWZIO";
 	
-//	public TWId(String id) {
-//		this.id = id;
-//	}
+	private TWId(String id) {
+		this.id = id;
+	}
 	
 	public TWId() {
 		this((int)(Math.random()*2) == 0);
@@ -32,11 +32,24 @@ public class TWId {
 		String temp = sb.toString();
 		for (int i=0; i<10; i++) {
 			if (checkTWId(temp + i)) {
-				id = temp + i;
+				//id = temp + i;
+				id = sb.append(i).toString();
 				break;
 			}
 		}
 
+	}
+	
+	public static TWId createTWId(String id) {
+		TWId temp = null;
+		if (checkTWId(id)) {
+			temp = new TWId(id);
+		}
+		return temp;
+	}
+	
+	public boolean isMale() {
+		return id.substring(1, 2).equals("1");
 	}
 	
 	

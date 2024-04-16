@@ -15,6 +15,13 @@ public class Brad20 {
 		System.out.println(new TWId(4));
 		System.out.println(new TWId(false, 7));
 		
+		TWId myId = TWId.createTWId("Y120239847");
+		if (myId != null) {
+			System.out.println(myId);
+		}else {
+			System.out.println("XX");
+		}
+		
 		
 
 	}
