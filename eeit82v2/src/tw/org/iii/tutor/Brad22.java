@@ -7,7 +7,7 @@ public class Brad22 {
 		Brad221 obj3 = new Brad222();
 		Brad221 obj4 = new Brad224();
 		obj4.m1();
-		Brad224 obj5 = (Brad224)obj4;
+		Brad224 obj5 = (Brad224)obj2;
 		obj5.m4();
 		//Brad223 obj6 = (Brad223)obj4;
 		
