@@ -12,6 +12,7 @@ abstract class Brad251 {
 	Brad251(){System.out.println("Brad251()");}
 	void m1() {System.out.println("Brad251:m1()");}
 	abstract void m2();
+	//abstract void m3();
 }
 class Brad252 extends Brad251 {
 	Brad252(){System.out.println("Brad252()");}

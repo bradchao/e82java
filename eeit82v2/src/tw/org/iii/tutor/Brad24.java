@@ -8,7 +8,7 @@ public class Brad24 {
 }
 class Brad241 {
 	void m1() {System.out.println("Brad241:m1()");}
-	protected Object m1(int a) {
+	private String m1(int a) {
 		System.out.println("Brad241:m1(int)");
 		return null;
 	}
@@ -22,7 +22,7 @@ class Brad242 extends Brad241 {
 		super.m1();
 		this.m1();
 	}
-	public String m1(int a) {
+	public StringBuffer m1(int a) {
 		System.out.println("Brad242:m1(int)"); 
 		return null;
 	}
