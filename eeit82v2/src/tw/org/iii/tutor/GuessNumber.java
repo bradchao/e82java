@@ -87,6 +87,7 @@ public class GuessNumber extends JFrame implements ActionListener{
 	public void actionPerformed(ActionEvent e) {
 		System.out.println("OK2");
 		
+		
 	}
 
 }
