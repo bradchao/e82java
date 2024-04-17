@@ -53,19 +53,21 @@ public class GuessNumber extends JFrame implements ActionListener{
 		//MyListener myListener = new MyListener(this);
 		//guess.addActionListener(myListener);
 		//guess.addActionListener(this);
-		guess.addActionListener(new ActionListener() {
+		ActionListener listener = new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				System.out.println("OK3");
 				guess();
 			}
-		});
+		}; 
+		guess.addActionListener(listener);
 		//guess.addActionListener(new ButtonListener());
 	}
 	
 	private void guess() {
 		counter++;
 		String strInput = input.getText();
+		
 		String result = checkAB(strInput);
 		log.append(String.format("%d. %s => %s\n", counter, strInput, result));
 		input.setText("");
