@@ -12,10 +12,11 @@ import javax.swing.DebugGraphics;
 import javax.swing.JPanel;
 
 public class MyDrawer extends JPanel{
-	private LinkedList<Line> lines;
+	private LinkedList<Line> lines, rbin;
 	
 	public MyDrawer() {
 		lines = new LinkedList<>();
+		rbin = new LinkedList<>();
 		
 		setBackground(Color.yellow);
 		MyMouseListener listener = new MyMouseListener();
@@ -48,8 +49,17 @@ public class MyDrawer extends JPanel{
 	}
 	
 	public void undo() {
-		lines.removeLast();
-		repaint();
+		if (lines.size() > 0) {
+			rbin.add(lines.removeLast());
+			repaint();
+		}
+	}
+	
+	public void redo() {
+		if (rbin.size() > 0) {
+			lines.add(rbin.removeLast());
+			repaint();
+		}
 	}
 	
 	private class MyMouseListener extends MouseAdapter {
@@ -60,6 +70,7 @@ public class MyDrawer extends JPanel{
 			
 			line.addPoint(point);;
 			lines.add(line);
+			rbin.clear();
 		}
 		@Override
 		public void mouseDragged(MouseEvent e) {
