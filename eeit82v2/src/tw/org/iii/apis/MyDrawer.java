@@ -12,8 +12,7 @@ import javax.swing.DebugGraphics;
 import javax.swing.JPanel;
 
 public class MyDrawer extends JPanel{
-	private LinkedList<LinkedList<Point>> lines;
-	
+	private LinkedList<Line> lines;
 	
 	public MyDrawer() {
 		lines = new LinkedList<>();
@@ -33,14 +32,13 @@ public class MyDrawer extends JPanel{
 		g2d.setColor(Color.blue);
 		g2d.setStroke(new BasicStroke(4));
 
-		for (LinkedList<Point> line : lines) {
+		for (Line line : lines) {
 			for (int i=1; i<line.size(); i++) {
-				Point p0 = line.get(i-1);
-				Point p1 = line.get(i);
+				Point p0 = line.getPoint(i-1);
+				Point p1 = line.getPoint(i);
 				g2d.drawLine(p0.getX(), p0.getY(), p1.getX(), p1.getY());
 			}
 		}
-		
 		
 	}
 	
@@ -48,15 +46,15 @@ public class MyDrawer extends JPanel{
 		@Override
 		public void mousePressed(MouseEvent e) {
 			Point point = new Point(e.getX(), e.getY());
-			LinkedList<Point> line = new LinkedList<>();
+			Line line = new Line(Color.blue, 4);
 			
-			line.add(point);
+			line.addPoint(point);;
 			lines.add(line);
 		}
 		@Override
 		public void mouseDragged(MouseEvent e) {
 			Point point = new Point(e.getX(), e.getY());
-			lines.getLast().add(point);
+			lines.getLast().addPoint(point);;
 			
 			repaint();
 		}
