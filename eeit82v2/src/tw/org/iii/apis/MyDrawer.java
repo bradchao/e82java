@@ -42,6 +42,16 @@ public class MyDrawer extends JPanel{
 		
 	}
 	
+	public void clear() {
+		lines.clear();
+		repaint();
+	}
+	
+	public void undo() {
+		lines.removeLast();
+		repaint();
+	}
+	
 	private class MyMouseListener extends MouseAdapter {
 		@Override
 		public void mousePressed(MouseEvent e) {
