@@ -6,8 +6,9 @@ import java.util.LinkedList;
 public class Line {
 	private LinkedList<Point> line;
 	private Color color;
-	private double width;
-	public Line(Color color, double width) {
+	private int width;
+	
+	public Line(Color color, int width) {
 		this.color = color;
 		this.width = width;
 		line = new LinkedList<>();
@@ -20,6 +21,6 @@ public class Line {
 		return line.get(index);
 	}
 	public Color getColor() {return color;}
-	public double getWidth() {return width;}
+	public int getWidth() {return width;}
 	public int size() {return line.size();}
 }
