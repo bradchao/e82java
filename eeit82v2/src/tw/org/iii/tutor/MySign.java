@@ -12,15 +12,16 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 import tw.org.iii.apis.MyDrawer;
+import tw.org.iii.apis.MyDrawerV2;
 
 public class MySign extends JFrame {
-	public MyDrawer myDrawer;
+	public MyDrawerV2 myDrawer;
 	private JButton clear, undo, redo, color, width;
 	
 	public MySign() {
 		super("My Sign");
 	
-		myDrawer = new MyDrawer();
+		myDrawer = new MyDrawerV2();
 		setLayout(new BorderLayout());
 		add(myDrawer, BorderLayout.CENTER);
 		
