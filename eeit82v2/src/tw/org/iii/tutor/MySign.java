@@ -5,10 +5,12 @@ import java.awt.Color;
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 
 import javax.swing.JButton;
 import javax.swing.JColorChooser;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 import tw.org.iii.apis.MyDrawer;
@@ -16,7 +18,7 @@ import tw.org.iii.apis.MyDrawerV2;
 
 public class MySign extends JFrame {
 	public MyDrawerV2 myDrawer;
-	private JButton clear, undo, redo, color, width;
+	private JButton clear, undo, redo, color, width, saveJPEG;
 	
 	public MySign() {
 		super("My Sign");
@@ -29,8 +31,10 @@ public class MySign extends JFrame {
 		undo = new JButton("Undo");
 		redo = new JButton("Redo");
 		color = new JButton("Color");
+		saveJPEG = new JButton("Save JPEG");
 		JPanel top = new JPanel(new FlowLayout());
 		top.add(clear); top.add(undo); top.add(redo); top.add(color);
+		top.add(saveJPEG);
 		add(top, BorderLayout.NORTH);
 		
 		setSize(800,480);
@@ -65,6 +69,17 @@ public class MySign extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				changeColor();
+			}
+		});
+		saveJPEG.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				try {
+					myDrawer.saveJPEG();
+					JOptionPane.showMessageDialog(null, "Save JPEG success");
+				} catch (IOException e1) {
+					JOptionPane.showMessageDialog(null, "Save JPEG failure");
+				}
 			}
 		});
 	}

@@ -6,10 +6,13 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.LinkedList;
 
-import javax.swing.DebugGraphics;
+import javax.imageio.ImageIO;
 import javax.swing.JPanel;
 
 public class MyDrawerV2 extends JPanel{
@@ -79,7 +82,15 @@ public class MyDrawerV2 extends JPanel{
 		return defColor;
 	}
 	
-	
+	public void saveJPEG() throws IOException {
+		BufferedImage img = 
+			new BufferedImage(getWidth(), getHeight(), BufferedImage.TYPE_INT_RGB);
+		Graphics g = img.getGraphics();
+		paint(g);
+		
+		ImageIO.write(img, "JPEG", new File("dir1/test2.jpg"));
+		
+	}
 	
 	
 	private class MyMouseListener extends MouseAdapter {
