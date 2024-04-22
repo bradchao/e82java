@@ -10,10 +10,12 @@ public class Brad35 {
 			System.out.println(a / b);
 			System.out.println(c[3]);
 			System.out.println("iSpan");
-		}catch (ArithmeticException e) {
-			System.out.println("Ooop!1");
 		}catch (ArrayIndexOutOfBoundsException e) {
 			System.out.println("Ooop!2");
+		}catch (ArithmeticException e) {
+			System.out.println("Ooop!1");
+		}catch (RuntimeException e) {
+			System.out.println("Ooop!3");
 		}
 		System.out.println("OK");
 	}
