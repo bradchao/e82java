@@ -48,6 +48,16 @@ public class TWId {
 		return temp;
 	}
 	
+	public static TWId createTWIdV2(String id) throws Exception{
+		TWId temp = null;
+		if (checkTWId(id)) {
+			temp = new TWId(id);
+		}else {
+			throw new Exception();
+		}
+		return temp;
+	}	
+	
 	public boolean isMale() {
 		return id.substring(1, 2).equals("1");
 	}

@@ -1,10 +1,11 @@
 package tw.org.iii.apis;
 
 import java.awt.Color;
+import java.io.Serializable;
 import java.util.HashMap;
 import java.util.LinkedList;
 
-public class LineV2 {
+public class LineV2 implements Serializable {
 	private LinkedList<HashMap<String,Integer>> line;
 	private Color color;
 	private int width;

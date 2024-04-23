@@ -8,7 +8,11 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.image.BufferedImage;
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.util.HashMap;
 import java.util.LinkedList;
 
@@ -89,6 +93,27 @@ public class MyDrawerV2 extends JPanel{
 		paint(g);
 		
 		ImageIO.write(img, "JPEG", new File("dir1/test2.jpg"));
+		
+	}
+	
+	public void saveLine(File saveFile) throws Exception {
+		ObjectOutputStream oout = new ObjectOutputStream(
+				new FileOutputStream(saveFile));
+		oout.writeObject(lines);
+		oout.flush();
+		oout.close();
+	}
+	
+	public void loadLine(File loadFile) throws Exception {
+		ObjectInputStream oin = new ObjectInputStream(
+				new FileInputStream(loadFile));
+		Object temp = oin.readObject();
+		
+		//if (temp instanceof LinkedList<LineV2>) {
+			lines = (LinkedList<LineV2>)temp;
+			repaint();
+			
+		//}
 		
 	}
 	
