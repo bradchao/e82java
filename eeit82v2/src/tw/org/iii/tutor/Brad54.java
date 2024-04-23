@@ -7,7 +7,7 @@ import java.net.SocketException;
 public class Brad54 {
 
 	public static void main(String[] args) {
-		while(true) {
+		//while(true) {
 			byte[] buf = new byte[4*1024];
 			try {
 				DatagramSocket socket = new DatagramSocket(8888);
@@ -20,14 +20,14 @@ public class Brad54 {
 				byte[] data = packet.getData();
 				int len = packet.getLength();
 				String mesg = new String(data, 0, len);
-				System.out.printf("%s : %s\n" , urip, mesg);
+				System.out.printf("%s : %s : %d\n" , urip, mesg, len);
 				if (mesg.trim().equals("bye")) {
-					break;
+					//break;
 				}
 			} catch (Exception e) {
 				System.out.println(e);
 			}
-		}
+		//}
 	}
 
 }

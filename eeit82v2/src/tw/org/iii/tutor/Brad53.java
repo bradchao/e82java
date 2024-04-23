@@ -8,13 +8,13 @@ import java.net.SocketException;
 public class Brad53 {
 
 	public static void main(String[] args) {
-		String mesg = "Hello, World";
+		String mesg = "資策會";
 		byte[] data = mesg.getBytes();
 		try {
 			DatagramSocket socket = new DatagramSocket();
 			DatagramPacket packet = new DatagramPacket(
 					data, 0, data.length,
-					InetAddress.getByName("10.0.103.50"), 8888);
+					InetAddress.getByName("127.0.0.1"), 8888);
 			socket.send(packet);
 			socket.close();
 			System.out.println("OK");
