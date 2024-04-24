@@ -16,12 +16,12 @@ public class Brad60 {
 
 	public static void main(String[] args) {
 		try {
-			URL url = new URL("https://p2.bahamut.com.tw/B/2KU/75/67946dfa9d725b67dde402d82b1pp1n5.JPG?w=1000");
+			URL url = new URL("https://pdfmyurl.com/?url=https://www.gamer.com.tw");
 			URLConnection urlConnection = url.openConnection();
 			HttpsURLConnection conn = (HttpsURLConnection)urlConnection;
 			
 			BufferedInputStream bin = new BufferedInputStream(conn.getInputStream());
-			BufferedOutputStream bout = new BufferedOutputStream(new FileOutputStream("dir3/gamer.jpg"));
+			BufferedOutputStream bout = new BufferedOutputStream(new FileOutputStream("dir3/gamer.pdf"));
 
 			byte[] buf = new byte[4*1024*1024]; int len;
 			while ( (len = bin.read(buf)) != -1) {

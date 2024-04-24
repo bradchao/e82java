@@ -2,7 +2,7 @@ package tw.org.iii.apis;
 
 import java.io.Serializable;
 
-public class Bike extends Object implements Serializable {
+public class Bike extends Object implements Serializable, Runnable {
 	protected double speed;
 	
 	public void upSpeed() {
@@ -20,6 +20,12 @@ public class Bike extends Object implements Serializable {
 	
 	public String toString() {
 		return String.format("Speed is %f", speed);
+	}
+	
+	@Override
+	public void run() {
+		// TODO Auto-generated method stub
+		
 	}
 	
 }
