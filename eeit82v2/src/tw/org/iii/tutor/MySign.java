@@ -15,12 +15,14 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
+import tw.org.iii.apis.MyClock;
 import tw.org.iii.apis.MyDrawerV2;
 
 public class MySign extends JFrame {
 	public MyDrawerV2 myDrawer;
 	private JButton clear, undo, redo, color, width, saveJPEG,
 		saveLines, loadLines;
+	private MyClock myClock;
 	
 	public MySign() {
 		super("My Sign");
@@ -36,10 +38,12 @@ public class MySign extends JFrame {
 		saveJPEG = new JButton("Save JPEG");
 		saveLines = new JButton("Save Lines");
 		loadLines = new JButton("Load Lines");
+		myClock = new MyClock();
 		
 		JPanel top = new JPanel(new FlowLayout());
 		top.add(clear); top.add(undo); top.add(redo); top.add(color);
 		top.add(saveJPEG); top.add(saveLines); top.add(loadLines);
+		top.add(myClock);
 		add(top, BorderLayout.NORTH);
 		
 		setSize(800,480);

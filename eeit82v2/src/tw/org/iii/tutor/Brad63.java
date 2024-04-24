@@ -6,7 +6,7 @@ import java.util.TimerTask;
 public class Brad63 {
 
 	public static void main(String[] args) {
-		Timer timer = new Timer();
+		Timer timer = new Timer(false);
 		Task1 t1 = new Task1();
 		StopTask s1 = new StopTask(timer);
 		timer.schedule(t1, 100, 100);
