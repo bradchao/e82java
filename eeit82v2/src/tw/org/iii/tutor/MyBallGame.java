@@ -4,8 +4,11 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.awt.image.BufferedImage;
 import java.io.File;
+import java.util.LinkedList;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -41,11 +44,15 @@ public class MyBallGame extends JFrame{
 	
 	private class MyPanel extends JPanel {
 		private Timer timer;
+		private LinkedList<BallTask> tasks;
 		
 		public MyPanel() {
 			setBackground(Color.YELLOW);
+			
+			tasks = new LinkedList<>();
 			timer = new Timer();
 			timer.schedule(new RefreshView(), 0, 16);
+			addMouseListener(new MyMouseListener());
 		}
 		@Override
 		public void paintComponent(Graphics g) {
@@ -53,9 +60,20 @@ public class MyBallGame extends JFrame{
 			viewW = getWidth(); viewH = getHeight();
 			
 			Graphics2D g2d = (Graphics2D)g;
-			
+			for (BallTask task : tasks) {
+				g2d.drawImage(task.getImg(), task.getX(), task.getY(), null);
+			}
 			
 		}	
+		
+		private class MyMouseListener extends MouseAdapter {
+			@Override
+			public void mousePressed(MouseEvent e) {
+				BallTask task = new BallTask(e.getX(), e.getY());
+				tasks.add(task);
+				timer.schedule(task, 500, 30);
+			}
+		}
 		
 		private class RefreshView extends TimerTask {
 			@Override
@@ -72,11 +90,14 @@ public class MyBallGame extends JFrame{
 		private int x, y, w, h, dx, dy;
 		private BufferedImage img;
 		
-		public BallTask(int x, int y) {
-			this.x = x; this.y = y;
+		public BallTask(int touchX, int touchY) {
 			int rand = (int)(Math.random()*4);	// 0 - 3
 			img = balls[rand];
 			w = img.getWidth(); h = img.getHeight();
+			
+			x = (int)(touchX - w / 2.0);
+			y = (int)(touchY - h / 2.0);
+			
 			dx = (int)(Math.random()*17) - 8;
 			dy = (int)(Math.random()*17) - 8;
 		}
