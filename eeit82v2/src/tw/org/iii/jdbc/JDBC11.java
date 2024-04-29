@@ -32,8 +32,28 @@ public class JDBC11 {
 			if (rs.next()) {
 				String hwPasswd = rs.getString("passwd");
 				if (BCrypt.checkpw(inputPasswd, hwPasswd)) {
+					int id = rs.getInt("id");
 					String realname = rs.getString("realname");
-					System.out.printf("Welcome, %s", realname);
+					System.out.printf("Welcome, %s\n", realname);
+					
+					System.out.print("New Password: ");
+					String newPasswd = scanner.next();
+					if (!newPasswd.equals("exit")) {
+						String hwNewPasswd = BCrypt.hashpw(newPasswd, BCrypt.gensalt());
+						String chpasswdSQL = "UPDATE member SET passwd = ? WHERE id = ?";
+						PreparedStatement pstmtCh = conn.prepareStatement(chpasswdSQL);
+						pstmtCh.setString(1, hwNewPasswd);
+						pstmtCh.setInt(2, id);
+						if (pstmtCh.executeUpdate() > 0) {
+							System.out.println("Change Password Success.");
+						}else {
+							// update passwd failure
+							System.out.println(chpasswdSQL);
+						}
+						
+					}
+					
+					
 				}else {
 					// Passwd ERROR
 					System.out.println("Passwd ERROR");
