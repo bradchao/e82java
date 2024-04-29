@@ -28,8 +28,11 @@ public class JDBC10 {
 			pstmt.setString(1, account);
 			pstmt.setString(2, hwPasswd);
 			pstmt.setString(3, realname);
-			pstmt.executeUpdate();
-			System.out.println("OK");
+			if (pstmt.executeUpdate() >= 1) {
+				System.out.println("OK");
+			}else {
+				System.out.println(sql);
+			}
 		}catch(Exception e) {
 			System.out.println(e);
 		}
