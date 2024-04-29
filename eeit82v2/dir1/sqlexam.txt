@@ -5,4 +5,11 @@ WHERE SupplierID IN (
     	SELECT CategoryID FROM categories
         WHERE CategoryName = 'Seafood'
     )
-) 
+)
+
+
+SELECT e.EmployeeID, e.LastName, SUM(od.UnitPrice*od.Quantity) total FROM orders o
+JOIN orderdetails od ON (o.OrderID = od.OrderID)
+JOIN employees e ON (o.EmployeeID = e.EmployeeID)
+GROUP BY o.EmployeeID
+ORDER BY total DESC 
