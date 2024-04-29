@@ -13,3 +13,24 @@ JOIN orderdetails od ON (o.OrderID = od.OrderID)
 JOIN employees e ON (o.EmployeeID = e.EmployeeID)
 GROUP BY o.EmployeeID
 ORDER BY total DESC 
+
++------------+-----------+-------------+
+| EmployeeID | LastName  | total       |
++------------+-----------+-------------+
+|          4 | Peacock   | 250187.4500 |
+|          3 | Leverling | 213051.3000 |
+|          1 | Davolio   | 202143.7100 |
+|          2 | Fuller    | 177749.2600 |
+|          7 | King      | 141295.9900 |
+|          8 | Callahan  | 133301.0300 |
+|          9 | Dodsworth |  82964.0000 |
+|          6 | Suyama    |  78198.1000 |
+|          5 | Buchanan  |  75567.7500 |
++------------+-----------+-------------+
+
+SELECT SUM(UnitPrice*Quantity) total FROM orderdetails
+WHERE OrderID IN (
+	SELECT OrderID FROM orders
+	WHERE EmployeeID = 5
+)
+
