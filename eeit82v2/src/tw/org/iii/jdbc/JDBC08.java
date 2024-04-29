@@ -11,10 +11,12 @@ import java.util.Scanner;
 public class JDBC08 {
 
 	public static void main(String[] args) {
+		final int RPP = 4;
 		//
 		System.out.print("頁: ");
 		Scanner scanner = new Scanner(System.in);
 		int page = scanner.nextInt();
+		int start = (page - 1) * RPP;
 		
 		Properties prop = new Properties();
 		prop.put("user", "root");
@@ -26,8 +28,8 @@ public class JDBC08 {
 				"jdbc:mysql://localhost/iii", prop);
 			PreparedStatement pstmt = conn.prepareStatement(sql);
 				){
-			pstmt.setInt(1, kw);
-			pstmt.setInt(2, kw);
+			pstmt.setInt(1, start);
+			pstmt.setInt(2, RPP);
 			ResultSet rs = pstmt.executeQuery();
 			while (rs.next()) {
 				String id = rs.getString("id");

@@ -1,0 +1,8 @@
+SELECT CompanyName FROM `suppliers` 
+WHERE SupplierID IN (
+	SELECT SupplierID FROM products
+    WHERE CategoryID = (
+    	SELECT CategoryID FROM categories
+        WHERE CategoryName = 'Seafood'
+    )
+) 
