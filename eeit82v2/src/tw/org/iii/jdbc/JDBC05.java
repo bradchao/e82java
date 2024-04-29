@@ -8,6 +8,7 @@ import java.net.URLConnection;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+import java.sql.Statement;
 import java.util.Properties;
 
 import org.json.JSONArray;
@@ -39,6 +40,10 @@ public class JDBC05 {
 		
 		try (Connection conn = DriverManager.getConnection(
 				"jdbc:mysql://localhost/iii", prop)){
+			
+			Statement stmt = conn.createStatement();
+			stmt.executeUpdate("DELETE FROM food");
+			stmt.executeUpdate("ALTER TABLE food AUTO_INCREMENT = 1");
 			
 			String sql = "INSERT INTO food (name,addr,tel,city,town,picurl,lat,lng)" + 
 			" VALUES (?,?,?,?,?,?,?,?)";
