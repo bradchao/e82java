@@ -63,7 +63,7 @@ public class FoodDB {
 	public String getData(int row, int col) {
 		try {
 			rs.absolute(row);
-			return rs.getString(fieldNames[col-1]);
+			return rs.getString(fieldNames[col-1]);	// rs.getString("name")
 		}catch(Exception e) {
 			return "ERROR";
 		}
@@ -73,6 +73,11 @@ public class FoodDB {
 	public String[] getHeader() {
 		return fieldNames;
 	}
+	
+	public void delData() {
+		
+	}
+	
 	
 	
 	
