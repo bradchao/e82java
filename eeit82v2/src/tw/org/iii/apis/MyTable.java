@@ -50,11 +50,23 @@ public class MyTable extends JTable {
 			return foodDB.getData(row+1, column+1);
 		}
 
-//		@Override
-//		public void setValueAt(Object aValue, int row, int column) {
-//			// TODO Auto-generated method stub
-//			super.setValueAt(aValue, row, column);
-//		}
+		@Override
+		public void setValueAt(Object aValue, int row, int column) {
+			foodDB.updateData(row+1, column+1, (String)aValue);
+		}
+
+		@Override
+		public boolean isCellEditable(int row, int column) {
+			boolean isEditable = true;
+			
+			if (column == 0) isEditable = false;
+			
+			return isEditable;
+		}
+		
+		
+		
+		
 		
 	}
 	
