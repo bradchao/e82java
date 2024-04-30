@@ -54,6 +54,10 @@ public class FoodDB {
 		}
 	}
 	
+	// 1-base
+	public void move(int row) throws Exception{
+		rs.absolute(row);
+	}
 	
 	public int getCols() {
 		return fieldNames.length;
@@ -74,8 +78,20 @@ public class FoodDB {
 		return fieldNames;
 	}
 	
-	public void delData() {
-		
+	public void delData(int row) throws Exception {
+		rs.absolute(row);
+		rs.deleteRow();
+	}
+	
+	// row, col => 1-base
+	public void updateData(int row, int col, String value) {
+		try {
+			rs.absolute(row);
+			rs.updateString(col, value);
+			rs.updateRow();
+		}catch(Exception e) {
+			System.out.println(e);
+		}
 	}
 	
 	

@@ -23,6 +23,16 @@ public class MyTable extends JTable {
 	}
 	
 	
+	public void delRow() {
+		try {
+			foodDB.delData(getSelectedRow()+1);
+			repaint();
+		}catch(Exception e) {
+			System.out.println(e);
+		}
+		
+	}
+	
 	private class MyModel extends DefaultTableModel {
 
 		@Override

@@ -27,7 +27,7 @@ public class JDBC17 extends JFrame {
 		del.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				
+				myTable.delRow();
 			}
 		});
 		
