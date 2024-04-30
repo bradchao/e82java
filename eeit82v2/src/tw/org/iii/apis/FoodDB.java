@@ -70,7 +70,9 @@ public class FoodDB {
 	}
 	
 	
-	
+	public String[] getHeader() {
+		return fieldNames;
+	}
 	
 	
 	

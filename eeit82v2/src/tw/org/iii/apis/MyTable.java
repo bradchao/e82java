@@ -19,6 +19,7 @@ public class MyTable extends JTable {
 	
 		myModel = new MyModel();
 		setModel(myModel);
+		myModel.setColumnIdentifiers(foodDB.getHeader());
 	}
 	
 	
